@@ -1,0 +1,11 @@
+{
+  "namespace": "com.example.kafkaes.avro",
+  "type": "record",
+  "name": "OrderCreatedAvro",
+  "fields": [
+    {"name":"orderId","type":"string"},
+    {"name":"customerId","type":"string"},
+    {"name":"amount","type":"double"},
+    {"name":"createdAt","type":{"type":"long","logicalType":"timestamp-millis"}}
+  ]
+}
