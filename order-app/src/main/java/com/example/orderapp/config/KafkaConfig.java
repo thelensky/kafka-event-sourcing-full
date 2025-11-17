@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 public class KafkaConfig {
     @Bean
     public NewTopic ordersTopic() {
-        return new NewTopic("orders", 3, (short)1);
+        return new NewTopic("orders", 3, (short) 1);
     }
 }

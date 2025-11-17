@@ -15,8 +15,17 @@ spring:
     properties:
       schema.registry.url: http://localhost:8081
     consumer:
-      group-id: readmodel-service_group
+      group-id: readmodel_group
+      auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
       properties:
         specific.avro.reader: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: true
+        web-allow-others: true
+

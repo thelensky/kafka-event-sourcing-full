@@ -2,35 +2,50 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.example.kafkaes</groupId>
-  <artifactId>kafka-event-sourcing-full</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example.kafkaes</groupId>
+    <artifactId>kafka-event-sourcing-full</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-  <modules>
-    <module>common</module>
-    <module>order-app</module>
-    <module>inventory-service</module>
-    <module>billing-service</module>
-    <module>readmodel-service</module>
-  </modules>
-
-  <properties>
-    <java.version>17</java.version>
-    <spring.boot.version>3.2.6</spring.boot.version>
-    <confluent.version>7.4.0</confluent.version>
-  </properties>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
+    <parent>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring.boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.6</version>
+        <relativePath/>
+    </parent>
+
+    <modules>
+        <module>common</module>
+        <module>order-app</module>
+        <module>inventory-service</module>
+        <module>billing-service</module>
+        <module>readmodel-service</module>
+    </modules>
+
+    <properties>
+        <java.version>17</java.version>
+        <confluent.version>7.9.4</confluent.version>
+        <spring.kafka.version>3.1.2</spring.kafka.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>confluent</id>
+            <url>https://packages.confluent.io/maven/</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

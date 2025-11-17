@@ -1,4 +1,4 @@
-package com.example.shared.model;
+package com.example.inventoryservice.shared.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

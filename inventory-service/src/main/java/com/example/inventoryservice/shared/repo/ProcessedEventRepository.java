@@ -1,6 +1,6 @@
-package com.example.shared.repo;
+package com.example.inventoryservice.shared.repo;
 
-import com.example.shared.model.ProcessedEvent;
+import com.example.inventoryservice.shared.model.ProcessedEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProcessedEventRepository extends JpaRepository<ProcessedEvent,String>{

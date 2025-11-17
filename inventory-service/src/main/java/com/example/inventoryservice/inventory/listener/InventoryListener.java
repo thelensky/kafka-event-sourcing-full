@@ -1,8 +1,8 @@
-package com.example.inventory.listener;
+package com.example.inventoryservice.inventory.listener;
 
 import com.example.kafkaes.avro.OrderCreatedAvro;
-import com.example.shared.model.ProcessedEvent;
-import com.example.shared.repo.ProcessedEventRepository;
+import com.example.inventoryservice.shared.model.ProcessedEvent;
+import com.example.inventoryservice.shared.repo.ProcessedEventRepository;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

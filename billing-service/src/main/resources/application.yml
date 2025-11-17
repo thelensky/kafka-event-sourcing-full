@@ -16,6 +16,7 @@ spring:
       schema.registry.url: http://localhost:8081
     consumer:
       group-id: billing-service_group
+      auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
       properties:

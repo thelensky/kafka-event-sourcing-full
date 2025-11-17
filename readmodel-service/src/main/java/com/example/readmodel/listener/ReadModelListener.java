@@ -13,14 +13,21 @@ import org.springframework.transaction.annotation.Transactional;
 public class ReadModelListener {
     private final OrderProjectionRepository repo;
     private final ProcessedEventRepository processedRepo;
-    public ReadModelListener(OrderProjectionRepository repo, ProcessedEventRepository processedRepo){ this.repo=repo; this.processedRepo=processedRepo; }
+
+    public ReadModelListener(OrderProjectionRepository repo, ProcessedEventRepository processedRepo) {
+        this.repo = repo;
+        this.processedRepo = processedRepo;
+    }
 
     @KafkaListener(topics = "orders", groupId = "readmodel_group")
     @Transactional
-    public void onOrder(OrderCreatedAvro event){
+    public void onOrder(OrderCreatedAvro event) {
         String id = event.getOrderId().toString();
-        if(processedRepo.existsByEventId(id)){ System.out.println("[ReadModel] already processed " + id); return; }
-        OrderProjection p = new OrderProjection(id, event.getCustomerId().toString(), event.getAmount(), event.getCreatedAt());
+        if (processedRepo.existsByEventId(id)) {
+            System.out.println("[ReadModel] already processed " + id);
+            return;
+        }
+        OrderProjection p = new OrderProjection(id, event.getCustomerId().toString(), event.getAmount(), event.getCreatedAt().toEpochMilli());
         repo.save(p);
         processedRepo.save(new ProcessedEvent(id));
         System.out.println("[ReadModel] indexed " + id);
